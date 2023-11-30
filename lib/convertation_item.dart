@@ -97,7 +97,7 @@ class ItemState {
   final Convertation convertation;
 }
 
-final List<(double Function(double), double Function(double))> formulaList = [
+const List<(double Function(double), double Function(double))> formulaList = [
   (_celsiusToFahrenheit, _fahrenheitToCelsius),
   (_kilometersToMiles, _milesToKilometers),
   (_kilogramsToPounds, _poundsToKilograms),
