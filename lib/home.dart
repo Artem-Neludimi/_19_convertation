@@ -17,6 +17,25 @@ class MyHomePage extends StatelessWidget {
       body: StreamBuilder(
           stream: db.convertationDao.watchAllConvertations(),
           builder: (context, snapshot) {
+            if (snapshot.data == null || snapshot.data!.isEmpty) {
+              return const Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Text(
+                    'Add desired convertation',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 24),
+                  ),
+                  SizedBox(height: 16),
+                  Text(
+                    'Click on the plus button below',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 16),
+                  ),
+                ],
+              );
+            }
             return Padding(
               padding: const EdgeInsets.all(16).copyWith(top: 0),
               child: ListView.separated(
