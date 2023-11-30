@@ -19,6 +19,8 @@ class ConvertationDao extends DatabaseAccessor<AppDatabase> with _$ConvertationD
 
   Future<void> insertConvertation(Insertable<Convertation> convertation) => into(convertations).insert(convertation);
   Stream<List<Convertation>> watchAllConvertations() => select(convertations).watch();
+  Future<int> deleteConvertationById(String id) =>
+      (delete(convertations)..where((convertation) => convertation.id.equals(id))).go();
 }
 
 // To generate the database.g.dart:
