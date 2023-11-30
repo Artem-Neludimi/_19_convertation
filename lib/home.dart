@@ -64,7 +64,7 @@ class _Floating extends StatelessWidget {
                           name2: 'Fahrenheit',
                           value1: 0,
                           value2: 0,
-                          formula: 1,
+                          formula: 0,
                         ),
                       );
                       Navigator.pop(context);
@@ -81,7 +81,7 @@ class _Floating extends StatelessWidget {
                           name2: 'Mile',
                           value1: 0,
                           value2: 0,
-                          formula: 2,
+                          formula: 1,
                         ),
                       );
                       Navigator.of(context).pop();
@@ -98,7 +98,7 @@ class _Floating extends StatelessWidget {
                           name2: 'Pound',
                           value1: 0,
                           value2: 0,
-                          formula: 3,
+                          formula: 2,
                         ),
                       );
                       Navigator.of(context).pop();
@@ -115,7 +115,7 @@ class _Floating extends StatelessWidget {
                           name2: 'Gallon',
                           value1: 0,
                           value2: 0,
-                          formula: 4,
+                          formula: 3,
                         ),
                       );
                       Navigator.of(context).pop();
@@ -132,7 +132,7 @@ class _Floating extends StatelessWidget {
                           name2: 'Yard',
                           value1: 0,
                           value2: 0,
-                          formula: 5,
+                          formula: 4,
                         ),
                       );
                       Navigator.of(context).pop();
@@ -149,7 +149,7 @@ class _Floating extends StatelessWidget {
                           name2: 'Square yard',
                           value1: 0,
                           value2: 0,
-                          formula: 6,
+                          formula: 5,
                         ),
                       );
                       Navigator.of(context).pop();
@@ -166,7 +166,7 @@ class _Floating extends StatelessWidget {
                           name2: 'Cubic yard',
                           value1: 0,
                           value2: 0,
-                          formula: 7,
+                          formula: 6,
                         ),
                       );
                       Navigator.of(context).pop();
@@ -183,7 +183,7 @@ class _Floating extends StatelessWidget {
                           name2: 'Square foot',
                           value1: 0,
                           value2: 0,
-                          formula: 8,
+                          formula: 7,
                         ),
                       );
                       Navigator.of(context).pop();
@@ -200,7 +200,7 @@ class _Floating extends StatelessWidget {
                           name2: 'Calories',
                           value1: 0,
                           value2: 0,
-                          formula: 9,
+                          formula: 8,
                         ),
                       );
                       Navigator.of(context).pop();
@@ -217,7 +217,7 @@ class _Floating extends StatelessWidget {
                           name2: 'Miles per hour',
                           value1: 0,
                           value2: 0,
-                          formula: 10,
+                          formula: 9,
                         ),
                       );
                       Navigator.of(context).pop();

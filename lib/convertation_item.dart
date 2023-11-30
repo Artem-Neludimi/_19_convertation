@@ -34,9 +34,8 @@ class ConvertationItem extends StatelessWidget {
                 const SizedBox(width: 8),
                 Expanded(
                   child: TextField(
-
                     controller: context.read<ItemCubit>().controller2,
-                    
+                    focusNode: context.read<ItemCubit>().node2,
                     onTapOutside: (_) => FocusManager.instance.primaryFocus?.unfocus(),
                     textAlign: TextAlign.center,
                     decoration: InputDecoration(
@@ -64,14 +63,38 @@ class ConvertationItem extends StatelessWidget {
 class ItemCubit extends Cubit<ItemState> {
   ItemCubit(Convertation convertation) : super(ItemState(convertation)) {
     controller1.text = convertation.value1.toString();
-    controller2.text = convertation.value2.toString();
-  }
+    _countSecondController();
 
+    controller1.addListener(_countSecondController);
+    controller2.addListener(_countFirstController);
+  }
   final controller1 = TextEditingController();
   final controller2 = TextEditingController();
+
+  final node2 = FocusNode();
+
+  void _countSecondController() {
+    if (node2.hasFocus) return;
+    final value1 = int.tryParse(controller1.text);
+    if (value1 != null) {
+      final value2 = value1 * 9 ~/ 5 + 32;
+      controller2.text = value2.toString();
+    }
+  }
+
+  void _countFirstController() {
+    if (!node2.hasFocus) return;
+    final value2 = int.tryParse(controller2.text);
+    if (value2 != null) {
+      final value1 = (value2 - 32) * 5 ~/ 9;
+      controller1.text = value1.toString();
+    }
+  }
 }
 
 class ItemState {
   const ItemState(this.convertation);
   final Convertation convertation;
 }
+
+final formulaList = [];
