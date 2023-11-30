@@ -34,7 +34,9 @@ class ConvertationItem extends StatelessWidget {
                 const SizedBox(width: 8),
                 Expanded(
                   child: TextField(
+
                     controller: context.read<ItemCubit>().controller2,
+                    
                     onTapOutside: (_) => FocusManager.instance.primaryFocus?.unfocus(),
                     textAlign: TextAlign.center,
                     decoration: InputDecoration(
@@ -60,7 +62,10 @@ class ConvertationItem extends StatelessWidget {
 }
 
 class ItemCubit extends Cubit<ItemState> {
-  ItemCubit(Convertation convertation) : super(ItemState(convertation));
+  ItemCubit(Convertation convertation) : super(ItemState(convertation)) {
+    controller1.text = convertation.value1.toString();
+    controller2.text = convertation.value2.toString();
+  }
 
   final controller1 = TextEditingController();
   final controller2 = TextEditingController();
