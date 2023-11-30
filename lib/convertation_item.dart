@@ -75,18 +75,18 @@ class ItemCubit extends Cubit<ItemState> {
 
   void _countSecondController() {
     if (node2.hasFocus) return;
-    final value1 = int.tryParse(controller1.text);
+    final value1 = double.tryParse(controller1.text);
     if (value1 != null) {
-      final value2 = value1 * 9 ~/ 5 + 32;
+      final value2 = value1 * 9 / 5 + 32;
       controller2.text = value2.toString();
     }
   }
 
   void _countFirstController() {
     if (!node2.hasFocus) return;
-    final value2 = int.tryParse(controller2.text);
+    final value2 = double.tryParse(controller2.text);
     if (value2 != null) {
-      final value1 = (value2 - 32) * 5 ~/ 9;
+      final value1 = (value2 - 32) * 5 / 9;
       controller1.text = value1.toString();
     }
   }
