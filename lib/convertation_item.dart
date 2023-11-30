@@ -16,7 +16,7 @@ class ConvertationItem extends StatelessWidget {
       child: BlocBuilder<ItemCubit, ItemState>(
         builder: (context, state) {
           return SizedBox(
-            height: 50,
+            height: 60,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -77,8 +77,8 @@ class ItemCubit extends Cubit<ItemState> {
     if (node2.hasFocus) return;
     final value1 = double.tryParse(controller1.text);
     if (value1 != null) {
-      final value2 = value1 * 9 / 5 + 32;
-      controller2.text = value2.toString();
+      final value2 = formulaList[state.convertation.formula].$1(value1);
+      controller2.text = value2.toStringAsFixed(1);
     }
   }
 
@@ -86,8 +86,8 @@ class ItemCubit extends Cubit<ItemState> {
     if (!node2.hasFocus) return;
     final value2 = double.tryParse(controller2.text);
     if (value2 != null) {
-      final value1 = (value2 - 32) * 5 / 9;
-      controller1.text = value1.toString();
+      final value1 = formulaList[state.convertation.formula].$2(value2);
+      controller1.text = value1.toStringAsFixed(1);
     }
   }
 }
@@ -97,4 +97,95 @@ class ItemState {
   final Convertation convertation;
 }
 
-final formulaList = [];
+final List<(double Function(double), double Function(double))> formulaList = [
+  (_celsiusToFahrenheit, _fahrenheitToCelsius),
+  (_kilometersToMiles, _milesToKilometers),
+  (_kilogramsToPounds, _poundsToKilograms),
+  (_litersToGallons, _gallonsToLiters),
+  (_metersToYards, _yardsToMeters),
+  (_squareMetersToSquareYards, _squareYardsToSquareMeters),
+  (_cubicMetersToCubicYards, _cubicYardsToCubicMeters),
+  (_squareMetersToSquareFoot, _squareFootToSquareMeters),
+  (_joulesToCalories, _caloriesToJoules),
+  (_metersPerSecondToMilesPerHour, _milesPerHourToMetersPerSecond),
+];
+
+double _celsiusToFahrenheit(double value1) {
+  return value1 * 9 / 5 + 32;
+}
+
+double _fahrenheitToCelsius(double value2) {
+  return (value2 - 32) * 5 / 9;
+}
+
+double _kilometersToMiles(double value1) {
+  return value1 * 0.621371;
+}
+
+double _milesToKilometers(double value2) {
+  return value2 / 0.621371;
+}
+
+double _kilogramsToPounds(double value1) {
+  return value1 * 2.20462;
+}
+
+double _poundsToKilograms(double value2) {
+  return value2 / 2.20462;
+}
+
+double _litersToGallons(double value1) {
+  return value1 * 0.264172;
+}
+
+double _gallonsToLiters(double value2) {
+  return value2 / 0.264172;
+}
+
+double _metersToYards(double value1) {
+  return value1 * 1.09361;
+}
+
+double _yardsToMeters(double value2) {
+  return value2 / 1.09361;
+}
+
+double _squareMetersToSquareYards(double value1) {
+  return value1 * 1.19599;
+}
+
+double _squareYardsToSquareMeters(double value2) {
+  return value2 / 1.19599;
+}
+
+double _cubicMetersToCubicYards(double value1) {
+  return value1 * 1.30795;
+}
+
+double _cubicYardsToCubicMeters(double value2) {
+  return value2 / 1.30795;
+}
+
+double _squareMetersToSquareFoot(double value1) {
+  return value1 * 10.7639;
+}
+
+double _squareFootToSquareMeters(double value2) {
+  return value2 / 10.7639;
+}
+
+double _joulesToCalories(double value1) {
+  return value1 * 0.238846;
+}
+
+double _caloriesToJoules(double value2) {
+  return value2 / 0.238846;
+}
+
+double _metersPerSecondToMilesPerHour(double value1) {
+  return value1 * 2.23694;
+}
+
+double _milesPerHourToMetersPerSecond(double value2) {
+  return value2 / 2.23694;
+}

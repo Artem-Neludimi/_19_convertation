@@ -20,7 +20,7 @@ class MyHomePage extends StatelessWidget {
             return Padding(
               padding: const EdgeInsets.all(16).copyWith(top: 0),
               child: ListView.separated(
-                padding: const EdgeInsets.only(top: 4),
+                padding: const EdgeInsets.only(top: 8),
                 separatorBuilder: (context, index) => const SizedBox(height: 8),
                 itemCount: snapshot.data?.length ?? 0,
                 itemBuilder: (BuildContext context, int index) {
